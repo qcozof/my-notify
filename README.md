@@ -1,3 +1,4 @@
+```yaml
 # my-notify
 system:
   proxy-address: 'socks5://127.0.0.1:9081'
@@ -10,7 +11,7 @@ pushplus:
 telegram:
   api-url: "https://api.telegram.org"
   token: "1234:xxxxx"
-  chat-id: "-100123456"
+  chat-id: "-1234"
   enable: true
 
 discord:
@@ -54,3 +55,5 @@ ums:
 dingding:
   api-url: "https://oapi.dingtalk.com/robot/send?access_token=xxxxx"
   enable: true
+
+```
