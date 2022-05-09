@@ -16,3 +16,4 @@
 /config.yaml
 /.idea
 /log
+/main.go

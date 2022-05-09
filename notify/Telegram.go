@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 func Telegram(text string) {
@@ -28,6 +29,12 @@ func Telegram(text string) {
 
 	remoteUrl := fmt.Sprintf("%s/bot%s/sendMessage",config.ApiUrl,config.Token)
 	//http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true} //忽略错误https证书
+	//设置代理
+	proxyAddress := global.SERVER_CONFIG.SystemConfig.ProxyAddress
+	if strings.TrimSpace(proxyAddress) != ""{
+		proxyUrl, _ := url.Parse(proxyAddress)
+		http.DefaultTransport = &http.Transport{Proxy: http.ProxyURL(proxyUrl)}
+	}
 
 	chatId :=config.ChatId
 	values := url.Values{
