@@ -5,7 +5,7 @@ import (
 )
 
 func NotifyAll(title ,message string){
-	PushPlus(title, message)
-	Telegram(message)
-	Discord(title,message)
+	go PushPlus(title, message)
+	go Telegram(message)
+	go Discord(title,message)
 }

@@ -4,7 +4,7 @@
 /*
 例：
     var dd = &notify.Email{
-	MailTo: []string{"wq@adcinfo.cn",},
+	MailTo: []string{"ww@qq.cn",},
 	Subject: "发件测试",
 	Body: "发件内容",
 }
@@ -35,7 +35,7 @@ func (srv *Email) Send()  (res string,err error) {
 
 /*	srv.host="smtp.exmail.qq.com"
 	srv.port="465"
-	srv.username = "xxx@adcinfo.cn"
+	srv.username = "xxx@qq.cn"
 	srv.password = "123456"*/
 	config := global.SERVER_CONFIG.EmailConfig
 	srv.host = config.Host
