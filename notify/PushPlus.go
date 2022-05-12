@@ -27,7 +27,9 @@ func PushPlus(title, content string) {
 	bm := bluemonday.StripTagsPolicy()
 	title = bm.Sanitize(title)
 
-	content = strings.Replace(content, `\n`, `<br/>`, 0)
+	title = strings.Replace(title, "\n", "", -1)
+	title = strings.Replace(title, "\r", "", -1)
+	content = strings.Replace(content, "\n", "<br/>", -1)
 
 	config := global.SERVER_CONFIG.PushPlusConfig
 	if !config.Enable {
