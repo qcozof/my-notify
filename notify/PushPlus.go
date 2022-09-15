@@ -16,7 +16,7 @@ import (
 
 const maxTitleLen = 100
 
-func PushPlus(title, content string) {
+func PushPlus(title, content, token string) {
 
 	ruTitle := []rune(title)
 	if len(ruTitle) > maxTitleLen {
@@ -40,9 +40,12 @@ func PushPlus(title, content string) {
 	remoteUrl := config.ApiUrl
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true} //忽略错误https证书
 
+	if strings.TrimSpace(token) == "" {
+		token = global.SERVER_CONFIG.PushPlusConfig.Token
+	}
 	//传键值对
 	var data = make(map[string]string)
-	data["token"] = global.SERVER_CONFIG.PushPlusConfig.Token
+	data["token"] = token
 	data["title"] = title
 	data["content"] = content
 	data["template"] = "html"
